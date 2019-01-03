@@ -1,0 +1,35 @@
+os:
+- linux
+services:
+- docker
+language: node_js
+node_js:
+  - '8'
+branches:
+  only:
+    - master
+cache:
+  yarn: true
+env:
+  global:
+  - secure: mq7VdSJ53Dn2biKHl8zToSZbTIHMuxv2/6sM3M0YrTifZ26JYorfhOeCHOXyk1UNuO1pcq81dEG2aXlj/463UOpYYhlxCcLYdgdsnq9hA6/q3CGX5LvCtSzil8hF5kJOEpIZhmBINM0nzZJcGlmWIhNQ9T1WEcZe8stLiiyXnS1k7L1tEc6UdApRgk3hrMpou4BKDSyn+JzKyHTo9/XcF/VbMXrk4jWbE/40mxuWyAk2xff9et5P2tv/MfiW+NoYtC6jhK+GS2zPRR/tSdjWcEy4Ogta2ht7s6UGQgOUKTkDgudTf3PgvOxcIggA2bNvysL0ubFTvKo+HXKjDNsHboyQvcCzqIvo/MPExu3rFNN2sgRVC0ORh+p6wvlwpFGjmDTpulbaLYjPjgfEqo6f2dHffj4wAZt3Q1F+VikA4YC8r3Ib2RBTHHOGNJSTsdP4WvHDuTKbypkmr4clkeqimo9QIzskESZgykXfBQGY2v04w4r5U1/pCVJ1y8fpdUj80NzJSz1FEAZPxBExRv9X+upz0f6gepPSjOPnyxA4X0VnjJPAL/fnuoE+ZPshKneCLdJDnf+a0BYyK6z5nRD078Y7Vx5GYQ7yp1cfpDnv8mSQ4IG79jvUfPWpFLj7U9LUVYBK+OQKTSCNTJrVnzr1CqcMU+VvRaNQqd9GkIF1zzY= #DOCKER_USER
+  - secure: GBjlT73Nc1bc1ccHeBdgTtlk4E5S3KbR0AzZigTQJiNZHYzGCAuv6Jro1cHQbm50+OJ9irVkywpsNt8cTnngSYWYXIXZzGkfxTuxH+KeLwmkb6SkMX//+3gSYHurfouWQ504YPylC3JuJm7/FPqpaDEeN0DNRD+h9stdUG7Ywjzt+lEck/4fDMoumygCf3UpqHSbIpxRYw9EBn5ek/HSR2QeGNeF8qHoTgq9eVknIr0kwkP56yNJJcoLY3NK3xPWRY9CYaT0HWoyuv+S/4/Q8B2YGohbING7P3Ultmw9w+AEbDJMzwlOCMNROpDBid8HIOSOAoB6CjoBeSOSiRuSmLlmSt+4sMKCnP6ksYL1QXaIcxJLa4zOzqsQsaKV6LEsQVpnXrfyJAc95u8Oy6hVTuIA9QmiYm6k9Cq2TXzR/4ZQm6d0QoWm3YQiwlCH1PK8IPPG+TgBQ/tmTxAeNyS+VSeCyBf174VwECVG82LhuDaIuWWSFAXO5unQfTEaR5kMbU2+WsIu3onkuLR4N/Zhnc5RQ7uJLmL1SdYUD52kIlGIA3JFxwQvLBR51VahzwzLj6hcDWhUV+q8zX+Xpa2UlLnuprAXz4d0x1PYqUtGu+C0PjdALc7V/jra1UftzD0UD+pLHzmlfUCKlu2Htn7oNgQljwexMzkCipq986UUItk= #DOCKER_PASS
+  - COMMIT=${TRAVIS_COMMIT::7}
+script:
+  - git config --global user.name "${GH_NAME}"
+  - git config --global user.email "${GH_EMAIL}"
+  - echo "machine github.com login ${GH_NAME} password ${GH_TOKEN}" > ~/.netrc
+  - cd website && yarn install && GIT_USER="${GH_NAME}" docker build -t luulpos_doc .
+notifications:
+  webhooks:
+    on_success: change
+    on_failure: always
+    on_start: false
+
+after_success:
+- docker login -u $DOCKER_USER -p $DOCKER_PASS
+- export TAG=latest
+- export IMAGE_NAME=luulsolutions/luulpos_doc
+- docker tag luulpos $IMAGE_NAME:$TAG
+- docker push $IMAGE_NAME
+- docker images
