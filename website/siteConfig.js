@@ -23,7 +23,7 @@ const users = [
 const siteConfig = {
   title: 'LuulPOS', // Title for your website.
   tagline: 'Open Source Point Of Sale',
-  url: 'https://luulpos.luulsolutions.com', // Your website URL
+  url: 'http://luulpos.org', // Your website URL
   baseUrl: '/', // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',
