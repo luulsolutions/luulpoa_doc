@@ -27,4 +27,4 @@ notifications:
 
 after_success:
 - docker login -u $DOCKER_USER -p $DOCKER_PASS
-- docker push $IMAGE_NAME
+- docker push luulsolutions/luulpos_doc:latest
