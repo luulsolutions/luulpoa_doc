@@ -8,6 +8,7 @@ node_js:
 branches:
   only:
     - master
+sudo: false
 cache:
   yarn: true
 env:
@@ -27,9 +28,7 @@ notifications:
     on_start: false
 
 after_success:
-- echo "${DOCKER_USER}" 
-- echo "${DOCKER_PASS}"
-- docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
+- docker login -u $DOCKER_USER -p $DOCKER_PASS
 - export TAG=latest
 - export IMAGE_NAME=luulsolutions/luulpos_doc
 - docker tag luulpos_doc $IMAGE_NAME:$TAG
