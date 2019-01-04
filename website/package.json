@@ -1,7 +1,7 @@
 {
   "scripts": {
     "examples": "docusaurus-examples",
-    "start": "docusaurus-start --port 8080",
+    "start": "docusaurus-start --port 80",
     "build": "docusaurus-build",
     "publish-gh-pages": "docusaurus-publish",
     "write-translations": "docusaurus-write-translations",
