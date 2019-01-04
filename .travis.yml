@@ -17,10 +17,8 @@ env:
   - secure: GBjlT73Nc1bc1ccHeBdgTtlk4E5S3KbR0AzZigTQJiNZHYzGCAuv6Jro1cHQbm50+OJ9irVkywpsNt8cTnngSYWYXIXZzGkfxTuxH+KeLwmkb6SkMX//+3gSYHurfouWQ504YPylC3JuJm7/FPqpaDEeN0DNRD+h9stdUG7Ywjzt+lEck/4fDMoumygCf3UpqHSbIpxRYw9EBn5ek/HSR2QeGNeF8qHoTgq9eVknIr0kwkP56yNJJcoLY3NK3xPWRY9CYaT0HWoyuv+S/4/Q8B2YGohbING7P3Ultmw9w+AEbDJMzwlOCMNROpDBid8HIOSOAoB6CjoBeSOSiRuSmLlmSt+4sMKCnP6ksYL1QXaIcxJLa4zOzqsQsaKV6LEsQVpnXrfyJAc95u8Oy6hVTuIA9QmiYm6k9Cq2TXzR/4ZQm6d0QoWm3YQiwlCH1PK8IPPG+TgBQ/tmTxAeNyS+VSeCyBf174VwECVG82LhuDaIuWWSFAXO5unQfTEaR5kMbU2+WsIu3onkuLR4N/Zhnc5RQ7uJLmL1SdYUD52kIlGIA3JFxwQvLBR51VahzwzLj6hcDWhUV+q8zX+Xpa2UlLnuprAXz4d0x1PYqUtGu+C0PjdALc7V/jra1UftzD0UD+pLHzmlfUCKlu2Htn7oNgQljwexMzkCipq986UUItk= #DOCKER_PASS
   - COMMIT=${TRAVIS_COMMIT::7}
 script:
-  - git config --global user.name "${GH_NAME}"
-  - git config --global user.email "${GH_EMAIL}"
-  - echo "machine github.com login ${GH_NAME} password ${GH_TOKEN}" > ~/.netrc
   - docker build -t luulpos_doc .
+  - docker images
 notifications:
   webhooks:
     on_success: change
@@ -32,5 +30,4 @@ after_success:
 - export TAG=latest
 - export IMAGE_NAME=luulsolutions/luulpos_doc
 - docker tag luulpos_doc $IMAGE_NAME:$TAG
-- docker images
 - docker push $IMAGE_NAME
