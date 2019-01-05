@@ -2,10 +2,10 @@ version: "3"
 
 services:
   docusaurus:
-    volumes:
-      - /etc/letsencrypt/live/somaliapp.com/:/etc/letsencrypt/live/somaliapp.com/
     image: luulsolutions/luulpos_doc
     build: .
+    volumes:
+      - /etc/letsencrypt/live/somaliapp.com/:/etc/letsencrypt/live/somaliapp.com/
     ports:
       - 443:443
       - 35729:35729
