@@ -82,13 +82,17 @@ const siteConfig = {
   },
 
   // Add custom scripts here that would be placed in <script> tags.
-  scripts: ['https://buttons.github.io/buttons.js'],
+  scripts: [
+    'https://buttons.github.io/buttons.js'
+
+],
 
   // On page navigation for the current documentation page.
   onPageNav: 'separate',
   // No .html extensions for paths.
   cleanUrl: true,
-
+  separateCss:'css/style.css',
+  separateCss:'css/colors/default.css',
   // Open Graph and Twitter card images.
   ogImage: 'img/logo.png',
   twitterImage: 'img/logo.png',
