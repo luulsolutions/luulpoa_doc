@@ -7,6 +7,6 @@ services:
     image: luulsolutions/luulpos_doc
     build: .
     ports:
-      - 80:80
+      - 443:443
       - 35729:35729
   
