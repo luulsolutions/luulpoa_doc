@@ -5,7 +5,7 @@ services:
     image: luulsolutions/luulpos_doc
     build: .
     volumes:
-      - /etc/letsencrypt/live/somaliapp.com/:/etc/letsencrypt/live/somaliapp.com/
+      - /etc/letsencrypt/:/etc/letsencrypt/
     ports:
       - 80:443
       - 35729:35729
