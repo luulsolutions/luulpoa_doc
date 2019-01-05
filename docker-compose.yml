@@ -7,6 +7,6 @@ services:
     volumes:
       - /etc/letsencrypt/live/somaliapp.com/:/etc/letsencrypt/live/somaliapp.com/
     ports:
-      - 443:443
+      - 80:443
       - 35729:35729
   
