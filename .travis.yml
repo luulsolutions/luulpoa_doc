@@ -20,6 +20,7 @@ script:
 - cd website 
 - yarn 
 - yarn build
+- cd ..
 - docker build -t luulsolutions/luulpos_doc .
 notifications:
   webhooks:
