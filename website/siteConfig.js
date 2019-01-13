@@ -14,7 +14,7 @@ const users = [
     caption: 'Amein abdi',
     // You will need to prepend the image path with your baseUrl
     // if it is not '/', like: '/test-site/img/docusaurus.svg'.
-    image: '/img/logo.png',
+    image: '/img/fav.png',
     infoLink: 'https://www.luulsolutions.com',
     pinned: true,
   },
@@ -49,9 +49,9 @@ const siteConfig = {
   users,
 
   /* path to images for header/footer */
-  headerIcon: 'img/logo.png',
-  footerIcon: 'img/logo.png',
-  favicon: 'img/logo.png',
+  headerIcon: 'img/fav.png',
+  footerIcon: 'img/fav.png',
+  favicon: 'img/fav.png',
 
   /* Colors for website */
   colors: {
@@ -91,8 +91,13 @@ const siteConfig = {
   onPageNav: 'separate',
   // No .html extensions for paths.
   cleanUrl: true,
-  separateCss:'css/style.css',
+  separateCss:'css/osahan.css',
   separateCss:'css/colors/default.css',
+  separateCss:'vendor/owlcarousel/assets/owl.carousel.min.css',
+  separateCss:'vendor/owlcarousel/assets/owl.theme.default.min.css',
+  separateCss:'vendor/font/css/fontawesome-all.css',
+  separateCss:'vendor/bootstrap/css/bootstrap.min.css',
+  separateCss:'vendor/animate/animate.css',
   // Open Graph and Twitter card images.
   ogImage: 'img/logo.png',
   twitterImage: 'img/logo.png',
