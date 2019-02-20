@@ -3,10 +3,8 @@ version: "3"
 services:
   docusaurus:
     image: luulsolutions/luulpos_doc
-    build: .
     volumes:
       - /etc/letsencrypt/:/etc/letsencrypt/
     ports:
       - 443:443
       - 35729:35729
-  
